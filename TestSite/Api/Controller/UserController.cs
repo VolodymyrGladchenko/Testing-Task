@@ -5,20 +5,20 @@ namespace Api.Controller
 {
     public class UserController : ApiController
     {
-        [Route("api/users/{userId}")]
+        [Route("api/users")]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new[] {"value1", "value2"};
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        [Route("api/users/{userId}")]
+        public string Get(int userId)
         {
             return "value";
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public void Post([FromBody] string value)
         {
         }
 
