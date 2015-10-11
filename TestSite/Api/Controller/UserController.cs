@@ -3,28 +3,28 @@ using System.Web.Http;
 
 namespace Api.Controller
 {
+    /// <summary>
+    /// Web API controller for Get and Post requests 
+    /// </summary>
     public class UserController : ApiController
     {
+       
         [Route("api/users")]
         public IEnumerable<string> Get()
         {
             return new[] {"value1", "value2"};
         }
 
-        [Route("api/users/{userId}")]
+        [Route("api/users/{userId}}")]
         public string Get(int userId)
         {
             return "value";
         }
 
-        // POST api/values
+        [Route("api/users}")]
         public void Post([FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
     }
 }
