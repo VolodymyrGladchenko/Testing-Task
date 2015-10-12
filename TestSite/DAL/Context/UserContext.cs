@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using DAL.DataBase;
 using DAL.Model;
 // ReSharper disable MissingXmlDoc
 
@@ -6,10 +7,15 @@ namespace DAL.Context
 {
     public class UserContext : DbContext
     {
-        public UserContext() : base("DefaultConnection")
+        static UserContext ()
+        {
+            Database.SetInitializer<UserContext>(new DataBaseInitializer());
+        }
+
+        public UserContext() : base("LocalDb")
         {
         }
 
-        public DbSet<User> Players { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

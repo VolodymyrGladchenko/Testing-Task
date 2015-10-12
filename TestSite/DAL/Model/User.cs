@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 // ReSharper disable MissingXmlDoc
 
 namespace DAL.Model
@@ -14,6 +15,6 @@ namespace DAL.Model
 
         public string Email { get; set; }
 
-        public List<string> Phones { get; set; }
+        public ICollection<Phone> Phones { get; set; }
     }
 }
