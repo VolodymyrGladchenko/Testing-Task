@@ -24,7 +24,7 @@ namespace Api.Controller
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        [Route("api/users/{userId}}")]
+        [Route("api/users/{userId}")]
         public string Get(int userId)
         {
             return "value";
@@ -34,7 +34,7 @@ namespace Api.Controller
         /// POST to Save new user
         /// </summary>
         /// <param name="value"></param>
-        [Route("api/users}")]
+        [Route("api/users")]
         public void Post([FromBody] string value)
         {
         }
