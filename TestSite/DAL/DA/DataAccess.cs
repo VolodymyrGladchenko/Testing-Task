@@ -1,4 +1,5 @@
-﻿namespace DAL.DA
+﻿// ReSharper disable MissingXmlDoc
+namespace DAL.DA
 {
     public class DataAccess
     {

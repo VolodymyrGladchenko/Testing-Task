@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
+// ReSharper disable MissingXmlDoc
 
 namespace DAL.Model
 {
-    /// <summary>
-    /// Code first user model
-    /// </summary>
     public class User
     {
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -15,6 +14,6 @@ namespace DAL.Model
 
         public string Email { get; set; }
 
-        public List<string> phone { get; set; }
+        public List<string> Phones { get; set; }
     }
 }
