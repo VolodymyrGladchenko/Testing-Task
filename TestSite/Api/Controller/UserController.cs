@@ -20,7 +20,7 @@ namespace Api.Controller
         }
 
         /// <summary>
-        /// Get with input parameter to get exact user
+        /// Get with input parameter to get user
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
