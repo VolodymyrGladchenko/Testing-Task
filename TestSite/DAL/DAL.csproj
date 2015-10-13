@@ -66,9 +66,9 @@
   <ItemGroup>
     <Compile Include="Context\UserContext.cs" />
     <Compile Include="DataBase\DataBaseInitializer.cs" />
+    <Compile Include="DataBase\Phone.cs" />
+    <Compile Include="DataBase\User.cs" />
     <Compile Include="DA\DataAccess.cs" />
-    <Compile Include="Model\Phone.cs" />
-    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +95,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{50e875a6-0a5b-4617-aaae-d00b70912f53}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

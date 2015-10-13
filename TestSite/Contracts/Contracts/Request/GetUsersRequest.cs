@@ -10,10 +10,12 @@ namespace Contracts.Contracts.Request
     
     public class GetUsersRequest
     {
-        public string UserId
-        {
-            get; set; 
-            
-        }
+        public int? pageSize { get; set; }
+
+        public int? pageNumber { get; set; }
+
+        public string sort { get; set; }
+
+        public string filter { get; set; }
     }
 }

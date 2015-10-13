@@ -2,7 +2,7 @@
 
 // ReSharper disable MissingXmlDoc
 
-namespace DAL.Model
+namespace DAL.DataBase
 {
     public class Phone
     {

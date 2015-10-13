@@ -2,7 +2,7 @@
 
 using System.Linq;
 using DAL.Context;
-using DAL.Model;
+using User = DAL.DataBase.User;
 
 namespace DAL.DA
 {

@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using DAL.Context;
-using DAL.Model;
 
 namespace DAL.DataBase
 {

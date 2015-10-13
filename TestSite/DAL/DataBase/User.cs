@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 // ReSharper disable MissingXmlDoc
 
-namespace DAL.Model
+namespace DAL.DataBase
 {
     public class User
     {

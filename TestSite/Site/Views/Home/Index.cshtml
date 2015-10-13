@@ -1,7 +1,6 @@
 ﻿
 <div ng-app="uigrid">
     <div ng-controller="MainCtrl">
-        <div class="text-warning">Only the <b>Description</b> and <b>Price</b> columns are editable in the server side</div>
         <div ui-grid="gridOptions" class="grid" ui-grid-edit></div>
         <p>
             Current page:
@@ -10,6 +9,4 @@
         <button type="button" class="btn btn-success" ng-click="pagination.previousPage()">previous page</button>
         <button type="button" class="btn btn-success" ng-click="pagination.nextPage()">next page</button>
     </div>
-    <p><a target="_blank" href="http://blog.backand.com/ng-grid-and-a-simple-rest-api/">Back to the article</a></p>
-    <p><a target="_blank" href="https://www.backand.com/apps/#/sign_up">Create your own backend</a></p>
 </div>

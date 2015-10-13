@@ -4,7 +4,7 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
     $scope.sort = [];
     $scope.filter = [];
     $scope.pagination = {
-        pageSize: 5,
+        pageSize: 10,
         pageNumber: 1,
         totalItems: null,
         getTotalPages: function () {
@@ -25,7 +25,6 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
     };
 
     $scope.gridOptions = {
-        excludeProperties: '__metadata',
         enablePaginationControls: false,
         useExternalSorting: true,
         useExternalFiltering: true,
@@ -81,11 +80,10 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
     };
 
     $scope.gridOptions.columnDefs = [
-        { name: 'id', enableCellEdit: false, width: '10%' },
-        { name: 'name', enableCellEdit: false, displayName: 'Name', width: '20%' },
-        { name: 'type', displayName: 'Type', enableCellEdit: false, width: '20%' },
-        { name: 'description', displayName: 'Description', width: '30%' },
-        { name: 'price', displayName: 'Price', width: '20%' }
+        { name: 'name', displayName: 'Name', width: '20%' },
+        { name: 'lastName', displayName: 'LastName', width: '20%' },
+        { name: 'email', displayName: 'Email', width: '30%' },
+        { name: 'phone', displayName: 'Phone', width: '20%' }
 
     ];
 
@@ -110,12 +108,9 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
     function ProductsService($http) {
 
         var self = this;
-        var baseUrl = 'https://api.backand.com/1/objects/';
-        var anonymousToken = {
-            'AnonymousToken': '78020290-5df3-44b8-9bdb-7b3b4fea2f25'
-        };
-
-        var objectName = 'products';
+        var baseUrl = 'http://localhost:50134/api/';
+      
+        var objectName = 'users';
 
         self.readAll = function (pageSize, pageNumber, sort, filter) {
             return $http({
@@ -127,7 +122,6 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
                     sort: sort,
                     filter: filter
                 },
-                headers: anonymousToken
             }).then(function (response) {
                 return response.data;
             });
@@ -137,7 +131,6 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
             return $http({
                 method: 'GET',
                 url: baseUrl + objectName + '/' + id,
-                headers: anonymousToken
             }).then(function (response) {
                 return response.data;
             });
@@ -151,7 +144,6 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
                 params: {
                     returnObject: true
                 },
-                headers: anonymousToken
             }).then(function (response) {
                 return response.data;
             });
@@ -172,7 +164,6 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
             return $http({
                 method: 'DELETE',
                 url: baseUrl + objectName + '/' + id,
-                headers: anonymousToken
             });
         };
 

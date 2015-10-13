@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using DAL.DataBase;
-using DAL.Model;
+using User = DAL.DataBase.User;
+
 // ReSharper disable MissingXmlDoc
 
 namespace DAL.Context
