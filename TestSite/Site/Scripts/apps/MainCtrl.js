@@ -67,7 +67,7 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
             });
 
             $scope.gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
-                var id = rowEntity.__metadata.id;
+                var id = rowEntity.Id;
                 var data = {};
                 data[colDef.name] = newValue;
 
@@ -83,15 +83,15 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
         { name: 'name', displayName: 'Name', width: '20%' },
         { name: 'lastName', displayName: 'LastName', width: '20%' },
         { name: 'email', displayName: 'Email', width: '30%' },
-        { name: 'phone', displayName: 'Phone', width: '20%' }
+    //    { name: 'phone', displayName: 'Phone', width: '20%' }
 
     ];
 
 
     $scope.load = function () {
         ProductsService.readAll($scope.pagination.pageSize, $scope.pagination.pageNumber, $scope.sort, $scope.filter).then(function (response) {
-            $scope.gridOptions.data = response.data;
-            $scope.pagination.totalItems = response.totalRows;
+            $scope.gridOptions.data = response.Data.Users;
+            $scope.pagination.totalItems = response.TotalRows;
 
         });
     };
@@ -154,7 +154,6 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
                 method: 'PUT',
                 url: baseUrl + objectName + '/' + id,
                 data: data,
-                headers: anonymousToken
             }).then(function (response) {
                 return response.data;
             });
