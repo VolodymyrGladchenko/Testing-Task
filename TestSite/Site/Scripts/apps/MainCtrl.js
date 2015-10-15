@@ -80,10 +80,10 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
     };
 
     $scope.gridOptions.columnDefs = [
-        { name: 'name', displayName: 'Name', width: '20%' },
+        { name: 'firstname', displayName: 'Name', width: '20%' },
         { name: 'lastName', displayName: 'LastName', width: '20%' },
         { name: 'email', displayName: 'Email', width: '30%' },
-    //    { name: 'phone', displayName: 'Phone', width: '20%' }
+        { name: 'phone', displayName: 'Phone', width: '20%' }
 
     ];
 

@@ -66,23 +66,11 @@
   <ItemGroup>
     <Compile Include="Context\UserContext.cs" />
     <Compile Include="DataBase\DataBaseInitializer.cs" />
-    <Compile Include="DataBase\Phone.cs" />
-    <Compile Include="DataBase\User.cs" />
     <Compile Include="DA\DataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DataBase\LocalDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DataBase\LocalDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>LocalDb.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

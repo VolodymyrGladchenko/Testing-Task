@@ -1,53 +1,43 @@
 ﻿// ReSharper disable MissingXmlDoc
 
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using Contracts.Contracts;
 using DAL.Context;
-using User = DAL.DataBase.User;
 
 namespace DAL.DA
 {
     public class DataAccess
     {
-        public void GetUsers(int? take, int? skip)
+        public List<User> GetUsers(int? take, int? skip)
         {
+            List<User> result = new List<User>();
+
             using (var db = new UserContext())
             {
-                var phones = db.Users.AsNoTracking().Select(p => new User
-                {
-                    Name = p.Name,
-                    LastName = p.LastName,
-                    Email = p.Email,
-                    Phones = p.Phones
-                });
+                var users = db.Users.Include("Phone").ToList();
+                result = users;
             }
+            return result;
         }
 
-        public void GetUser(string name)
-        {
-            using (var db = new UserContext())
-            {
-                var phones = db.Users.AsNoTracking().Select(p => new User
-                {
-                    Name = p.Name,
-                    LastName = p.LastName,
-                    Email = p.Email,
-                    Phones = p.Phones
-                });
-            }
-        }
 
-        public void SaveUser(User user)
+        public void SaveOrUpdateUser(User user)
         {
             using (var db = new UserContext())
             {
-                var phones = db.Users.Select(p => new User
+                db.Users.AddOrUpdate(p => new User
                 {
-                    Name = p.Name,
+                    Id = p.Id,
+                    FirstName = p.FirstName,
                     LastName = p.LastName,
                     Email = p.Email,
-                    Phones = p.Phones
+                    Phone = p.Phone
                 });
+                db.SaveChanges();
             }
+            
         }
     }
 }

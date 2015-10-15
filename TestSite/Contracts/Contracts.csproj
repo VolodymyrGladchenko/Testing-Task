@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Contracts\Phone.cs" />
     <Compile Include="Contracts\Request\GetUsersRequest.cs" />
     <Compile Include="Contracts\Response\Data.cs" />
     <Compile Include="Contracts\Response\GetUsersResponse.cs" />

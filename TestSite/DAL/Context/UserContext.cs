@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
+using Contracts.Contracts;
 using DAL.DataBase;
-using User = DAL.DataBase.User;
+
 
 // ReSharper disable MissingXmlDoc
 
@@ -18,5 +19,6 @@ namespace DAL.Context
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Phone> Phones { get; set; }
     }
 }

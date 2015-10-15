@@ -1,21 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // ReSharper disable MissingXmlDoc
 
 namespace Contracts.Contracts
 {
-    public class User
+    public class Phone
     {
         [Key]
+        [ForeignKey("User")]
         public int Id { get; set; }
 
-        public string FirstName { get; set; }
+        public List<string> PhoneNumber { get; set; }
 
-        public string LastName { get; set; }
-
-        public string Email { get; set; }
-
-        public Phone Phone { get; set; }
+        public virtual User User { get; set; }
     }
 }
