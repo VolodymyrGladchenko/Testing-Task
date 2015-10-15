@@ -68,7 +68,7 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
 
             $scope.gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
                 var id = rowEntity.Id;
-                var data = {};
+                var data = rowEntity;
                 data[colDef.name] = newValue;
 
                 ProductsService.update(id, data).then(function (response) {
@@ -79,11 +79,13 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
         }
     };
 
+    var PhonesCellTemplate = '<div class="ngCellText" ng-class="col.colIndex()"><span ng-repeat="phone in row.entity.PhoneNumbers">{{phone.Number}}</span></div>';
+
     $scope.gridOptions.columnDefs = [
-        { name: 'firstname', displayName: 'Name', width: '20%' },
-        { name: 'lastName', displayName: 'LastName', width: '20%' },
-        { name: 'email', displayName: 'Email', width: '30%' },
-        { name: 'phone', displayName: 'Phone', width: '20%' }
+        { field: 'FirstName', displayName: 'Name', width: '20%' },
+        { field: 'LastName', displayName: 'LastName', width: '20%' },
+        { field: 'Email', displayName: 'Email', width: '30%' },
+        { field: 'PhoneNumbers', displayName: 'Phone', width: '30%', cellTemplate: PhonesCellTemplate }
 
     ];
 
@@ -127,15 +129,6 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
             });
         };
 
-        self.readOne = function (id) {
-            return $http({
-                method: 'GET',
-                url: baseUrl + objectName + '/' + id,
-            }).then(function (response) {
-                return response.data;
-            });
-        };
-
         self.create = function (data) {
             return $http({
                 method: 'POST',
@@ -152,17 +145,10 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
         self.update = function (id, data) {
             return $http({
                 method: 'PUT',
-                url: baseUrl + objectName + '/' + id,
+                url: baseUrl + objectName,
                 data: data,
             }).then(function (response) {
                 return response.data;
-            });
-        };
-
-        self.delete = function (id) {
-            return $http({
-                method: 'DELETE',
-                url: baseUrl + objectName + '/' + id,
             });
         };
 

@@ -16,6 +16,6 @@ namespace Contracts.Contracts
 
         public string Email { get; set; }
 
-        public Phone Phone { get; set; }
+        public List<PhoneNumber> PhoneNumbers { get; set; }
     }
 }

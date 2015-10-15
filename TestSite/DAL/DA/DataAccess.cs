@@ -16,7 +16,7 @@ namespace DAL.DA
 
             using (var db = new UserContext())
             {
-                var users = db.Users.Include("Phone").ToList();
+                var users = db.Users.Include("PhoneNumbers").ToList();
                 result = users;
             }
             return result;
@@ -27,14 +27,7 @@ namespace DAL.DA
         {
             using (var db = new UserContext())
             {
-                db.Users.AddOrUpdate(p => new User
-                {
-                    Id = p.Id,
-                    FirstName = p.FirstName,
-                    LastName = p.LastName,
-                    Email = p.Email,
-                    Phone = p.Phone
-                });
+                db.Users.AddOrUpdate(user);
                 db.SaveChanges();
             }
             
