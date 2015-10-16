@@ -4,7 +4,7 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
     $scope.sort = [];
     $scope.filter = [];
     $scope.pagination = {
-        pageSize: 10,
+        pageSize: 20,
         pageNumber: 1,
         totalItems: null,
         getTotalPages: function () {
@@ -79,13 +79,17 @@ app.controller('MainCtrl', ['ProductsService', '$scope', function (ProductsServi
         }
     };
 
-    var PhonesCellTemplate = '<div class="ngCellText" ng-class="col.colIndex()"><span ng-repeat="phone in row.entity.PhoneNumbers">{{phone.Number}}</span></div>';
+    var PhonesCellTemplate = '<div class="ngCellText" ng-class="col.colIndex()">' +
+        '<span ng-repeat="phone in row.entity.PhoneNumbers">' +
+        '{{phone.Number}}'+' ' +
+        '</span>' +
+        '</div>';
 
     $scope.gridOptions.columnDefs = [
         { field: 'FirstName', displayName: 'Name', width: '20%' },
         { field: 'LastName', displayName: 'LastName', width: '20%' },
         { field: 'Email', displayName: 'Email', width: '30%' },
-        { field: 'PhoneNumbers', displayName: 'Phone', width: '30%', cellTemplate: PhonesCellTemplate }
+        { field: 'PhoneNumbers', displayName: 'Phone', width: '30%', cellTemplate: PhonesCellTemplate, enableCellEdit:false}
 
     ];
 
