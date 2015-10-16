@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using Contracts.Contracts;
 using Contracts.Contracts.Request;
@@ -23,7 +24,8 @@ namespace Api.Controller
         public GetUsersResponse Get([FromUri]GetUsersRequest request)
         {
             var usersDb = dbProxy.GetUsers(request.pageNumber, request.pageSize);
-            return new GetUsersResponse {Data = new Data {Users = usersDb}, TotalRows = usersDb.Count};
+            var usersFromPage = PageResolver.GetPage(usersDb, request);
+            return new GetUsersResponse {Data = new Data {Users = usersFromPage.ToList() }, TotalRows = usersDb.Count};
         }
 
 

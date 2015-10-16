@@ -9,35 +9,27 @@ namespace DAL.DataBase
     {
         protected override void Seed(UserContext db)
         {
-            var p1 = new User
-            {
-                FirstName = "Sample name 1",
-                Email = "Sample Email1",
-                LastName = "Last Name 1",
-                Id = 0,
-                PhoneNumbers =
-                    new List<PhoneNumber>
-                    {
-                        new PhoneNumber {Id = 0, UserKey = 0, Number = "323-32-23"},
-                        new PhoneNumber {Id = 1, UserKey = 0, Number = "323-32-23"}
-                    }
-            };
-            var p2 = new User
-            {
-                FirstName = "Sample name 2",
-                Email = "Sample Email2",
-                LastName = "Last Name 2",
-                Id = 1,
-                PhoneNumbers =
-                    new List<PhoneNumber>
-                    {
-                        new PhoneNumber {Id = 0, UserKey = 1, Number = "123-32-23"},
-                        new PhoneNumber {Id = 1, UserKey = 1, Number = "123-32-23"}
-                    }
-            };
+            List<User> initialUsers = new List<User>();
 
-            db.Users.Add(p1);
-            db.Users.Add(p2);
+            for (int i = 0; i < 55; i++)
+            {
+                var user = new User
+                {
+                    FirstName = "Sample name - "+i,
+                    Email = "Sample Email - "+i,
+                    LastName = "Last Name - "+i,
+                    Id = i+1,
+                    PhoneNumbers =
+                        new List<PhoneNumber>
+                        {
+                            new PhoneNumber {Id = i, UserKey = i+1, Number = "123-32-23"},
+                            new PhoneNumber {Id = i+1, UserKey = i+1, Number = "123-32-23"}
+                        }
+                };
+                initialUsers.Add(user);
+            }
+
+            db.Users.AddRange(initialUsers);
             db.SaveChanges();
         }
     }
