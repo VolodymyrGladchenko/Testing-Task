@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Api;
+using Autofac.Integration.WebApi;
 
 namespace Site
 {
@@ -12,6 +14,12 @@ namespace Site
             // Web API configuration and services     
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            var container = ApiKernel.Instance.Container;
+
+            //Integrate Autofac
+            var resolver = new AutofacWebApiDependencyResolver(container);
+            config.DependencyResolver = resolver;
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

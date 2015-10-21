@@ -8,7 +8,13 @@ using DAL.Context;
 
 namespace DAL.DA
 {
-    public class DataAccess
+    public interface IDataAccess
+    {
+        List<User> GetUsers(int? take, int? skip);
+        void SaveOrUpdateUser(User user);
+    }
+
+    public class DataAccess:IDataAccess
     {
         public List<User> GetUsers(int? take, int? skip)
         {

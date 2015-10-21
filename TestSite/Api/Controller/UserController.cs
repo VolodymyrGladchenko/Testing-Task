@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Contracts.Contracts;
@@ -9,31 +8,24 @@ using DAL.DA;
 
 namespace Api.Controller
 {
-    /// <summary>
-    ///     Web API controller for Get and Post requests
-    /// </summary>
-    public class UserController : ApiController
-    {
-        DataAccess dbProxy = new DataAccess();
 
-        /// <summary>
-        ///     Get all users
-        /// </summary>
-        /// <returns></returns>
+    public class UserController : ApiController{
+        private readonly IDataAccess dbProxy;
+
+        public UserController(IDataAccess dbProxy)
+        {
+            this.dbProxy = dbProxy;
+        }
+
         [Route("api/users")]
-        public GetUsersResponse Get([FromUri]GetUsersRequest request)
+        public GetUsersResponse Get([FromUri] GetUsersRequest request)
         {
             var usersDb = dbProxy.GetUsers(request.pageNumber, request.pageSize);
             var usersFromPage = PageResolver.GetPage(usersDb, request);
-            return new GetUsersResponse {Data = new Data {Users = usersFromPage.ToList() }, TotalRows = usersDb.Count};
+            return new GetUsersResponse {Data = new Data {Users = usersFromPage.ToList()}, TotalRows = usersDb.Count};
         }
 
 
-
-        /// <summary>
-        /// POST to Save user
-        /// </summary>
-        /// <param name="value"></param>
         [Route("api/users")]
         public string Post([FromBody] User user)
         {
@@ -49,10 +41,6 @@ namespace Api.Controller
             return "success";
         }
 
-        /// <summary>
-        /// Put to Update user
-        /// </summary>
-        /// <param name="value"></param>
         [Route("api/users")]
         public string Put([FromBody] User user)
         {
